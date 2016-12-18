@@ -15,7 +15,7 @@ install:
   - pip install git+https://github.com/ansible/ansible-container.git
   - pip install ansible
   # Install netcat for tests
-  - apt-get install -y netcat
+  - sudo apt-get install -y netcat
 
 script:
   # Make sure docker is functioning
