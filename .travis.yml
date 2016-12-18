@@ -14,8 +14,10 @@ install:
   # Install the latest Ansible Container and Ansible
   - pip install git+https://github.com/ansible/ansible-container.git
   - pip install ansible
-  # Install netcat for tests
-  - sudo apt-get install -y netcat
+  # Install python module for tests
+  - sudo pip install python_memcached
+  # Already existing memcache prevent tests from running
+  - sudo killall -15 memcached
 
 script:
   # Make sure docker is functioning

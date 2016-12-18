@@ -13,16 +13,11 @@
         delay: 30
         timeout: 120 
 
-    - name: Get the system date
-      command: date +%Y-%m-%d
-      register: system_date 
-      
-    - name: put date to memcached
-      shell: "printf 'set mykey 0 60 10\r\n{{ system_date.stdout }}\r\n' |nc {{ host_ip }} 11211"
+    - pip: name=python-memcached
+    - copy: src=test.py dest=test.py mode=755
+    - shell: ./test.py
+      register: get
+    - debug: var=get
 
-    - name: get date from memcached
-      shell: "printf 'get mykey\r\n{{ system_date.stdout }}\r\n' |nc {{ host_ip }} 11211"
-      register: memcached_date 
-  
     - assert:
-        that: system_date.stdout in memcached_date.stdout_lines 
+        that: "'test_data' in get.stdout_lines"
