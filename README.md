@@ -1,53 +1,43 @@
-# Ansible Role: Memcached
+Role Name
+=========
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-memcached.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-memcached)
+[![Build Status](https://travis-ci.org/awasileyv/memcached-container.svg?branch=master)](https://travis-ci.org/awasilyev/memcached-container)
 
-An Ansible Role that installs Memcached on RedHat/CentOS or Debian/Ubuntu Linux.
+Use this role to add a memcached service to your Ansible Container project. See Role Variables below for how to set the memory size and maximum connectiin number. Connect to the memcached on port 11211.
 
-## Requirements
+Run the following commands to install the service:
 
-None.
+```
+# Set the working directory to your Ansible Container project root
+$ cd myproject
 
-## Role Variables
+# Install the service
+$ ansible-container install awasilyev.memcached-container-role 
+```
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Role Variables
+--------------
 
-    memcached_user: memcache
+Set the following environment variables in container.yml:
 
-The user under which the Memcached daemon will run.
+MEMCACHED_MEM
+> max memory to use for items in megabytes (default: 64 MB)
 
-    memcached_port: 11211
-    memcached_listen_ip: 127.0.0.1
+MEMCACHED_MAXCONN
+> max simultaneous connections (default: 1024)
 
-The port and IP address (127.0.0.1 for localhost) on which Memcached will listen for requests.
-
-    memcached_memory_limit: 64
-    memcached_connections: 1024
-
-Memcached limits. The maximum amount of RAM `memcached` will consume (64MB is the default), and the maximum number of simultaneous connections memcached will handle.
-
-    memcached_log_file: /var/log/memcached.log
-
-The location of the memcached log file.
-
-    memcached_log_verbosity: ""
-
-Normally memcached does not log anything. Change to "-v" to enable logging or to "-vv" for debug logging.
-
-## Dependencies
+Dependencies
+------------
 
 None.
 
-## Example Playbook
+License
+-------
 
-    - hosts: cache
-      roles:
-        - { role: geerlingguy.memcached }
+Apache v2
 
-## License
+Author Information
+------------------
 
-MIT / BSD
+[@awasilyev](https://github.com/awasilyev)
 
-## Author Information
-
-This role was created in 2014 by [Jeff Geerling](http://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
