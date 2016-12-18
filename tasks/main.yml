@@ -1,0 +1,12 @@
+---
+- name: Install Memcached.
+  package: name=memcached state=installed
+  register: memcached_install
+
+- name: Add entrypoint script
+  copy:
+   src: entrypoint.sh
+   dest: /entrypoint.sh
+   owner: root
+   group: root
+   mode: 0775

@@ -1,0 +1,14 @@
+mariadb:
+  image: centos:7
+  entrypoint: ['/entrypoint.sh']
+  working_dir: /
+  user: memcached
+  command: ['mysqld']        
+  environment:
+    - MEMCACHED_MAXCONN=1024
+    - MEMCACHED_MEM=64
+  ports:
+    - 11211:11211
+ 
+  # volumes:
+  # - <your data volume>:/var/lib/mysql:rw 

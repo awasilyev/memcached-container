@@ -1,0 +1,28 @@
+---
+- name: Test memcached service   
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    host_ip: 127.0.0.1
+  tasks:
+    - name: Wait for service to be available
+      wait_for:
+        host: "{{ host_ip }}"
+        port: 11211
+        delay: 30
+        timeout: 120 
+
+    - name: Get the system date
+      command: date +%Y-%m-%d
+      register: system_date 
+      
+    - name: put date to memcached
+      shell: "printf 'set mykey 0 60 10\r\n{{ system_date.stdout }}\r\n' |nc {{ host_ip }} 11211"
+
+    - name: get date from memcached
+      shell: "printf 'get mykey\r\n{{ system_date.stdout }}\r\n' |nc {{ host_ip }} 11211"
+      register: memcached_date 
+  
+    - assert:
+        that: system_date.stdout in memcached_date.stdout_lines 
