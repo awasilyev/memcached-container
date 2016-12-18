@@ -3,7 +3,6 @@ memcached:
   entrypoint: ['/entrypoint.sh']
   working_dir: /
   user: memcached
-  command: ['mysqld']        
   environment:
     - MEMCACHED_MAXCONN=1024
     - MEMCACHED_MEM=64
