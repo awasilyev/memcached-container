@@ -1,4 +1,4 @@
-mariadb:
+memcached:
   image: centos:7
   entrypoint: ['/entrypoint.sh']
   working_dir: /
