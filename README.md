@@ -1,4 +1,4 @@
-Role Name
+Memcached
 =========
 
 [![Build Status](https://travis-ci.org/awasileyv/memcached-container.svg?branch=master)](https://travis-ci.org/awasilyev/memcached-container)
@@ -34,10 +34,11 @@ None.
 License
 -------
 
-Apache v2
+MIT/BSD
 
 Author Information
 ------------------
 
 [@awasilyev](https://github.com/awasilyev)
 
+based on original [memcached](https://github.com/geerlingguy/ansible-role-memcached) role
