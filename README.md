@@ -1,7 +1,7 @@
 Memcached
 =========
 
-[![Build Status](https://travis-ci.org/awasileyv/memcached-container.svg?branch=master)](https://travis-ci.org/awasilyev/memcached-container)
+[![Build Status](https://travis-ci.org/awasilyev/memcached-container.svg?branch=master)](https://travis-ci.org/awasilyev/memcached-container)
 
 Use this role to add a memcached service to your Ansible Container project. See Role Variables below for how to set the memory size and maximum connectiin number. Connect to the memcached on port 11211.
 
